@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap');
+
+@font-face {
+    font-family: 'Inter' ;
+    src: local('Inter'),  local('Inter'),
+        url('../fonts/Inter-VariableFont_slntwght.ttf.woff2') format('woff2'),
+        url('../fonts/Inter-VariableFont_slntwght.ttf.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    background-color: #976995;
+    font-family: 'Inter';
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    min-height: 100vh;
+    transform-origin: top left;
+    transition: transform 0.5s linear;
+}
+
+.main-page {
+    background: url('../img/background.jpg');
+}
+
+.page-projects {
+    font-family: 'Roboto', sans-serif;
+}
+
+.contacts-page {
+    height: calc(100vh - 140px);
+}
+
+header .container {
+    width: 100vw;
+}
+
+h1 span {
+    color:#eece1a;
+}
+
+.projects img {
+    width: 100%;
+    border: 3px #fff solid; 
+}
+
+.projects img:hover {
+    opacity: 0.5;
+    border-color: #eece1a;
+    transition: all 0.5s ease-out;
+}
+
+.card > .btn-light, .card > .btn-dark {
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-light {
+    color: #333;
+    background-color: #c4c4c4;
+}
+
+.btn-dark {
+    background-color: #000000;
+}
+
+.titles h2 {
+    background: rgba(73, 73, 73, 0.5);
+}
+
+.boxes > div {
+
+}
+
+.boxes > div span {
+    color: #eece1a;
+}
+
+.show-nav {
+    transform: rotate(-20deg);
+}
+
+.circle-container {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+}
+
+.circle {
+    background-color: #856D99;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;
+}
+
+.show-nav .circle {
+    transform: rotate(-70deg);
+}
+
+.show-nav + nav li {
+    transition: translateX(0);
+    transition-delay: 0.3s;
+}
+
+.circle button {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    font-size: 26px;
+    color: #fff;
+}
+
+.circle button:focus {
+    outline: none;
+}
+
+.circle button#openBtn {
+    left: 60%;
+} 
+
+.circle button#closeBtn {
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+}
+
+.circle button i {
+    pointer-events: none;
+}
+
+nav {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+nav ul li {
+    color: #fff;
+    transform: translateX(-100%);
+    transition: transform  .4s ease-in;
+}
+
+nav ul li i {
+    font-size: 16px;
+}
+
+nav ul li a {
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+nav ul li:first-child a {
+    padding-top: 1px;
+}
+nav ul li:last-child a {
+    padding-bottom: 1px;
+}
+
+nav ul li + li {
+    transform: translateX(-125%);
+}
+
+nav ul li + li + li {
+    transform: translateX(-150%);
+}
