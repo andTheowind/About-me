@@ -42,6 +42,7 @@ body {
 
 .wrapper {
     min-height: 100vh;
+    width: 100%;
     transform-origin: top left;
     transition: transform 0.5s linear;
 }
