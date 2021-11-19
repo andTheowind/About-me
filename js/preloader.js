@@ -6,5 +6,5 @@ window.addEventListener('load', function () {
     setTimeout(function () {
         mask.remove();
     }, 600);
-    body.style.backgroundColor = '#976995';
+    body.style.backgroundColor = '#90618d';
 });
