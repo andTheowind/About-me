@@ -76,6 +76,7 @@ h1 {
 
 h1 span {
     color:#eece1a;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .projects img {
