@@ -4,73 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts</title>
-    <!-- connection tailwind -->
+    <meta name="description" content="Контакты веб-разработчика andTheowind.">
+    <title>Контакты — andTheowind</title>
     <link rel="stylesheet" href="css/tailwindmin.css">
-    <!-- connection tailwind -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <!-- connection font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- connection font Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
 <body class="flex justify-center items-center">
     <div class="mask flex justify-center items-center">
-        <div class="loader"></div>
+        <div class="loader" role="status" aria-label="Загрузка"></div>
     </div>
-    <!-- /.mask -->
-    <div class="wrapper page-projects flex flex-col justify-center bg-gray-700">
+    <div class="wrapper page-projects contacts-page-wrapper flex flex-col justify-center">
         <header>
             <div class="container">
                 <div class="circle-container">
                     <div class="circle">
-                        <button class="border-none" id="closeBtn">
-                            <i class="fas fa-times"></i>
+                        <button type="button" class="border-none" id="closeBtn" aria-label="Закрыть меню">
+                            <i class="fas fa-times" aria-hidden="true"></i>
                         </button>
-                        <button class="border-none" id="openBtn">
-                            <i class="fas fa-bars"></i>
+                        <button type="button" class="border-none" id="openBtn" aria-label="Открыть меню">
+                            <i class="fas fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <!-- /.circle -->
                 </div>
-                <!-- /.circle-container -->
             </div>
         </header>
-        <!-- /.header -->
         <main>
-            <div class="contacts-page container mx-auto px-7 md:px-16">
-                <div class="title text-center mt-36 mb-10 md:mt-10">
-                    <h1 class="md:text-7xl">Мои <span>контакты</span></h1>
-                </div>
-                <!-- /.title -->
-                <div class="boxes flex justify-center flex-col md:flex-row">
-                    <div class="border-solid border-4 border-white px-7 py-4 text-2xl my-2.5 md:mx-4">
-                      <span class="text-secondary">Email: </span><a class="text-base md:text-2xl" href="mailto:and.theowind@gmail.com">and.theowind@gmail.com</a>
+            <section class="contacts-page contacts-section container mx-auto px-4 sm:px-6 md:px-8 lg:px-12" aria-labelledby="contacts-title">
+                <header class="title text-center mt-14 mb-12 md:mt-16 md:mb-16">
+                    <h1 id="contacts-title" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">Мои <span>контакты</span></h1>
+                    <p class="subtitle">Свяжитесь удобным способом — отвечу в рабочее время.</p>
+                </header>
+                <div class="boxes grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+                    <div class="my-2.5 md:mx-0">
+                        <span>Email</span>
+                        <a href="mailto:and.theowind@gmail.com">and.theowind@gmail.com</a>
                     </div>
-                    <div class="border-solid border-4 border-white px-7 py-4 text-2xl my-2.5 md:mx-4">
-                      <span class="text-secondary">Телефон: </span><a class="text-base md:text-2xl" href="tel:+79786629390">+7 (978) 662-93-90</a>
+                    <div class="my-2.5 md:mx-0">
+                        <span>Телефон</span>
+                        <a href="tel:+79398854462">+7 (939) 885-44-62</a>
+                    </div>
+                    <div class="my-2.5 md:mx-0">
+                        <span>Telegram</span>
+                        <a href="https://t.me/andtheowind" target="_blank" rel="noopener noreferrer">@andtheowind</a>
                     </div>
                 </div>
-                <!-- /.boxes -->
-            </div>
+            </section>
         </main>
-        <!-- /.main -->
-        <footer class="bg-gray-800 text-center mt-10">
-            <div class="py-4">created by andTheowind</div>
+        <footer class="mt-10 mt-auto border-t border-white border-opacity-10 bg-gray-900 bg-opacity-70 text-center">
+            <div class="py-5 px-4 text-sm text-gray-400">andTheowind · портфолио</div>
         </footer>
-        <!-- /.footer -->
     </div>
-    <nav>
+    <nav aria-label="Основная навигация">
         <ul class="main-menu">
-            <li class="flex items-center my-7"><i class="fas fa-home"></i><a href="index.html" class="ml-2">Главная</a></li>
-            <li class="flex items-center my-7 ml-4"><i class="fas fa-folder"></i><a href="projects.html" class="ml-2">Проекты</a></li>
-            <li class="flex items-center my-7 ml-8"><i class="fas fa-envelope"></i><a href="#" class="ml-2">Контакты</a></li>
+            <li class="flex items-center my-7"><i class="fas fa-home" aria-hidden="true"></i><a href="index.html" class="ml-2">Главная</a></li>
+            <li class="flex items-center my-7 ml-4"><i class="fas fa-folder" aria-hidden="true"></i><a href="projects.html" class="ml-2">Проекты</a></li>
+            <li class="flex items-center my-7 ml-8"><i class="fas fa-envelope" aria-hidden="true"></i><a href="contacts.html" class="ml-2">Контакты</a></li>
         </ul>
     </nav>
-    <!-- /.nav -->
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/preloader.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/preloader.js"></script>
 </body>
 </html>
