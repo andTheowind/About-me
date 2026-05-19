@@ -1,61 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио веб-разработчика andTheowind: вёрстка, лендинги, фронтенд.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Портфолио веб-разработчика andTheowind: вёрстка, лендинги, фронтенд."
+    />
     <title>andTheowind — веб-разработчик</title>
-    <link rel="stylesheet" href="css/tailwindmin.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-</head>
-<body class="flex justify-center items-center">
+    <link rel="stylesheet" href="css/tailwindmin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+  </head>
+  <body class="flex justify-center items-center">
     <div class="mask flex justify-center items-center">
-        <div class="loader" role="status" aria-label="Загрузка"></div>
+      <div class="loader" role="status" aria-label="Загрузка"></div>
     </div>
     <div class="wrapper main-page flex flex-col justify-center pl-6 md:pl-12">
-        <header>
-            <div class="container">
-                <div class="circle-container">
-                    <div class="circle">
-                        <button type="button" class="border-none" id="closeBtn" aria-label="Закрыть меню">
-                            <i class="fas fa-times" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="border-none" id="openBtn" aria-label="Открыть меню">
-                            <i class="fas fa-bars" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
+      <header>
+        <div class="container">
+          <div class="circle-container">
+            <div class="circle">
+              <button
+                type="button"
+                class="border-none"
+                id="closeBtn"
+                aria-label="Закрыть меню"
+              >
+                <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="border-none"
+                id="openBtn"
+                aria-label="Открыть меню"
+              >
+                <i class="fas fa-bars" aria-hidden="true"></i>
+              </button>
             </div>
-        </header>
-        <main>
-            <div class="container">
-                <div class="titles mx-2 md:m-20 pr-6 md:pr-12 pb-12">
-                    <h1>and<span>Theowind</span></h1>
-                    <h2><span>Веб-разработчик</span></h2>
-                    <p class="hero-lead">Вёрстка и фронтенд: лендинги, корпоративные сайты<br />и пет-проекты. Ниже — ссылка на GitHub и раздел с работами.</p>
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="https://github.com/andTheowind" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github" aria-hidden="true"></i> GitHub
-                        </a>
-                        <a class="btn btn-ghost" href="projects.html">Проекты</a>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="container">
+          <div class="titles mx-2 md:m-20 pr-6 md:pr-12 pb-12">
+            <h1>and<span>Theowind</span></h1>
+            <h2><span>Веб-разработчик</span></h2>
+            <p class="hero-lead">
+              Вёрстка и фронтенд: лендинги, корпоративные сайты<br />и
+              пет-проекты. Ниже — ссылка на GitHub и раздел с работами.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/andTheowind"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a class="btn btn-ghost" href="projects.html">Проекты</a>
             </div>
-        </main>
+          </div>
+        </div>
+      </main>
     </div>
     <nav aria-label="Основная навигация">
-        <ul class="main-menu">
-            <li class="flex items-center my-7"><i class="fas fa-home" aria-hidden="true"></i><a href="index.html" class="ml-2">Главная</a></li>
-            <li class="flex items-center my-7 ml-4"><i class="fas fa-folder" aria-hidden="true"></i><a href="projects.html" class="ml-2">Проекты</a></li>
-            <li class="flex items-center my-7 ml-8"><i class="fas fa-envelope" aria-hidden="true"></i><a href="contacts.html" class="ml-2">Контакты</a></li>
-        </ul>
+      <ul class="main-menu">
+        <li class="flex items-center my-7">
+          <i class="fas fa-home" aria-hidden="true"></i
+          ><a href="index.html" class="ml-2">Главная</a>
+        </li>
+        <li class="flex items-center my-7 ml-4">
+          <i class="fas fa-folder" aria-hidden="true"></i
+          ><a href="projects.html" class="ml-2">Проекты</a>
+        </li>
+        <li class="flex items-center my-7 ml-8">
+          <i class="fas fa-envelope" aria-hidden="true"></i
+          ><a href="contacts.html" class="ml-2">Контакты</a>
+        </li>
+      </ul>
     </nav>
     <script src="js/script.js"></script>
     <script src="js/preloader.js"></script>
-</body>
+  </body>
 </html>
