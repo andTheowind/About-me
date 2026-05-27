@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem("site-theme");
+          document.documentElement.setAttribute(
+            "data-theme",
+            savedTheme || "dark"
+          );
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
     <meta
       name="description"
       content="Примеры работ веб-разработчика andTheowind: лендинги и сайты."
@@ -23,14 +36,28 @@
     />
   </head>
 
-  <body class="flex justify-center items-center projects-buttons-v1">
+  <body class="flex justify-center items-center projects-buttons-v1 projects-page">
     <!-- Button styles: projects-buttons-v1 | projects-buttons-v2 | projects-buttons-v3 -->
     <div class="mask flex justify-center items-center">
       <div class="loader" role="status" aria-label="Загрузка"></div>
     </div>
     <!-- /.mask -->
+    <button
+      type="button"
+      class="theme-toggle"
+      data-theme-toggle
+      aria-label="Переключить тему"
+    >
+      <span class="theme-toggle__icon" aria-hidden="true">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+      </span>
+      <span class="theme-toggle__text">Светлая тема</span>
+    </button>
 
     <div class="wrapper page-projects flex flex-col justify-center">
+      <div class="projects-scene" aria-hidden="true">
+        <canvas class="projects-bg-canvas"></canvas>
+      </div>
       <header>
         <div class="container">
           <div class="circle-container">
@@ -693,9 +720,9 @@
       </main>
       <!-- /.main -->
       <footer
-        class="mt-10 mt-auto border-t border-white border-opacity-10 bg-gray-900 bg-opacity-70 text-center"
+        class="site-footer mt-10 mt-auto text-center"
       >
-        <div class="py-5 px-4 text-sm text-gray-400">
+        <div class="site-footer__text py-5 px-4 text-sm">
           andTheowind · портфолио
         </div>
       </footer>
@@ -720,7 +747,9 @@
     </nav>
     <!-- /.nav -->
 
+    <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/projects-effects.js"></script>
     <script src="js/preloader.js"></script>
   </body>
 </html>

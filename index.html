@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem("site-theme");
+          document.documentElement.setAttribute(
+            "data-theme",
+            savedTheme || "dark"
+          );
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
     <meta
       name="description"
       content="Портфолио веб-разработчика andTheowind: вёрстка, лендинги, фронтенд."
@@ -26,6 +39,17 @@
     <div class="mask flex justify-center items-center">
       <div class="loader" role="status" aria-label="Загрузка"></div>
     </div>
+    <button
+      type="button"
+      class="theme-toggle"
+      data-theme-toggle
+      aria-label="Переключить тему"
+    >
+      <span class="theme-toggle__icon" aria-hidden="true">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+      </span>
+      <span class="theme-toggle__text">Светлая тема</span>
+    </button>
     <div class="wrapper main-page flex flex-col justify-center pl-6 md:pl-12">
       <header>
         <div class="container">
@@ -91,6 +115,7 @@
         </li>
       </ul>
     </nav>
+    <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
     <script src="js/preloader.js"></script>
   </body>
