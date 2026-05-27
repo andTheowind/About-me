@@ -2,6 +2,34 @@ const projectsCanvas = document.querySelector(".projects-bg-canvas");
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
+const documentTheme = document.documentElement;
+
+const THEME_COLORS = {
+  light: ["111,99,246", "17,183,170", "128,163,255"],
+  dark: ["124,108,245", "61,214,199", "92,102,255"],
+};
+
+const getThemePalette = () =>
+  documentTheme.getAttribute("data-theme") === "light"
+    ? THEME_COLORS.light
+    : THEME_COLORS.dark;
+
+const drawFrameBackground = (context, width, height) => {
+  const theme = documentTheme.getAttribute("data-theme");
+  const backgroundGradient = context.createLinearGradient(0, 0, width, height);
+
+  if (theme === "light") {
+    backgroundGradient.addColorStop(0, "rgba(244, 247, 252, 0.86)");
+    backgroundGradient.addColorStop(1, "rgba(226, 235, 247, 0.68)");
+  } else {
+    backgroundGradient.addColorStop(0, "rgba(7, 8, 13, 0.92)");
+    backgroundGradient.addColorStop(1, "rgba(12, 14, 24, 0.7)");
+  }
+
+  context.clearRect(0, 0, width, height);
+  context.fillStyle = backgroundGradient;
+  context.fillRect(0, 0, width, height);
+};
 
 function setupCanvasBackground() {
   if (!projectsCanvas || prefersReducedMotion) {
@@ -17,14 +45,13 @@ function setupCanvasBackground() {
   let width = 0;
   let height = 0;
   let animationFrameId = 0;
-  let palette = [];
+  let palette = getThemePalette();
   let pointer = {
     x: window.innerWidth * 0.5,
     y: window.innerHeight * 0.35,
   };
 
-  const particles = new Array(16).fill(null).map(function (_, index) {
-    return {
+  const particles = Array.from({ length: 16 }, (_, index) => ({
       x: Math.random(),
       y: Math.random(),
       radius: 90 + Math.random() * 170,
@@ -32,27 +59,11 @@ function setupCanvasBackground() {
       offset: Math.random() * Math.PI * 2,
       drift: 20 + Math.random() * 40,
       depth: 0.25 + (index % 4) * 0.18,
-    };
-  });
+    }));
 
-  function updatePalette() {
-    const theme = document.documentElement.getAttribute("data-theme");
-
-    if (theme === "light") {
-      palette = [
-        "111,99,246",
-        "17,183,170",
-        "128,163,255",
-      ];
-      return;
-    }
-
-    palette = [
-      "124,108,245",
-      "61,214,199",
-      "92,102,255",
-    ];
-  }
+  const updatePalette = () => {
+    palette = getThemePalette();
+  };
 
   function resizeCanvas() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.8);
@@ -63,27 +74,10 @@ function setupCanvasBackground() {
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  function drawBackground() {
-    const theme = document.documentElement.getAttribute("data-theme");
-    const backgroundGradient = context.createLinearGradient(0, 0, width, height);
-
-    if (theme === "light") {
-      backgroundGradient.addColorStop(0, "rgba(244, 247, 252, 0.86)");
-      backgroundGradient.addColorStop(1, "rgba(226, 235, 247, 0.68)");
-    } else {
-      backgroundGradient.addColorStop(0, "rgba(7, 8, 13, 0.92)");
-      backgroundGradient.addColorStop(1, "rgba(12, 14, 24, 0.7)");
-    }
-
-    context.clearRect(0, 0, width, height);
-    context.fillStyle = backgroundGradient;
-    context.fillRect(0, 0, width, height);
-  }
-
   function renderFrame(time) {
-    drawBackground();
+    drawFrameBackground(context, width, height);
 
-    particles.forEach(function (particle, index) {
+    particles.forEach((particle, index) => {
       const angle = time * particle.speed + particle.offset;
       const x =
         particle.x * width +
@@ -97,9 +91,9 @@ function setupCanvasBackground() {
       const color = palette[index % palette.length];
       const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
 
-      gradient.addColorStop(0, "rgba(" + color + ", 0.22)");
-      gradient.addColorStop(0.45, "rgba(" + color + ", 0.1)");
-      gradient.addColorStop(1, "rgba(" + color + ", 0)");
+      gradient.addColorStop(0, `rgba(${color}, 0.22)`);
+      gradient.addColorStop(0.45, `rgba(${color}, 0.1)`);
+      gradient.addColorStop(1, `rgba(${color}, 0)`);
 
       context.fillStyle = gradient;
       context.beginPath();
@@ -115,23 +109,23 @@ function setupCanvasBackground() {
   renderFrame(0);
 
   window.addEventListener("resize", resizeCanvas);
-  window.addEventListener("pointermove", function (event) {
+  window.addEventListener("pointermove", (event) => {
     pointer.x = event.clientX;
     pointer.y = event.clientY;
   });
 
-  const observer = new MutationObserver(function () {
+  const observer = new MutationObserver(() => {
     updatePalette();
   });
 
-  observer.observe(document.documentElement, {
+  observer.observe(documentTheme, {
     attributes: true,
     attributeFilter: ["data-theme"],
   });
 
-  window.addEventListener("beforeunload", function () {
+  window.addEventListener("beforeunload", () => {
     observer.disconnect();
-    window.cancelAnimationFrame(animationFrameId);
+    cancelAnimationFrame(animationFrameId);
   });
 }
 

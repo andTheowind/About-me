@@ -1,5 +1,14 @@
 const THEME_STORAGE_KEY = "site-theme";
 const themeButtons = document.querySelectorAll("[data-theme-toggle]");
+const documentTheme = document.documentElement;
+
+const setStoredTheme = (theme) => {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (error) {
+    // Ignore storage access errors in restricted contexts.
+  }
+};
 
 function getInitialTheme() {
   try {
@@ -15,16 +24,16 @@ function getInitialTheme() {
 }
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
+  documentTheme.setAttribute("data-theme", theme);
 
-  themeButtons.forEach(function (button) {
+  themeButtons.forEach((button) => {
     const icon = button.querySelector("i");
     const text = button.querySelector(".theme-toggle__text");
     const nextTheme = theme === "dark" ? "light" : "dark";
     const buttonLabel =
       nextTheme === "light" ? "Светлая тема" : "Тёмная тема";
 
-    button.setAttribute("aria-label", "Переключить тему: " + buttonLabel);
+    button.setAttribute("aria-label", `Переключить тему: ${buttonLabel}`);
 
     if (text) {
       text.textContent = buttonLabel;
@@ -38,20 +47,15 @@ function applyTheme(theme) {
 
 function toggleTheme() {
   const currentTheme =
-    document.documentElement.getAttribute("data-theme") || getInitialTheme();
+    documentTheme.getAttribute("data-theme") || getInitialTheme();
   const nextTheme = currentTheme === "dark" ? "light" : "dark";
 
   applyTheme(nextTheme);
-
-  try {
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-  } catch (error) {
-    // Ignore storage access errors in restricted contexts.
-  }
+  setStoredTheme(nextTheme);
 }
 
-applyTheme(document.documentElement.getAttribute("data-theme") || getInitialTheme());
+applyTheme(documentTheme.getAttribute("data-theme") || getInitialTheme());
 
-themeButtons.forEach(function (button) {
+themeButtons.forEach((button) => {
   button.addEventListener("click", toggleTheme);
 });

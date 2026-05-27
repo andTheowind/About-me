@@ -1,9 +1,13 @@
-const mask = document.querySelector('.mask');
+const mask = document.querySelector(".mask");
 
-window.addEventListener('load', function () {
-    if (!mask) return;
-    mask.classList.add('hide');
-    setTimeout(function () {
-        mask.remove();
-    }, 600);
+window.addEventListener("load", () => {
+  if (!mask) {
+    return;
+  }
+
+  mask.classList.add("hide");
+
+  window.setTimeout(() => {
+    mask.remove();
+  }, 600);
 });
