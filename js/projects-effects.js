@@ -2,7 +2,7 @@ const projectsCanvas = document.querySelector(".projects-bg-canvas");
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
-const documentTheme = document.documentElement;
+const rootElement = document.documentElement;
 
 const THEME_COLORS = {
   light: ["111,99,246", "17,183,170", "128,163,255"],
@@ -10,12 +10,12 @@ const THEME_COLORS = {
 };
 
 const getThemePalette = () =>
-  documentTheme.getAttribute("data-theme") === "light"
+  rootElement.getAttribute("data-theme") === "light"
     ? THEME_COLORS.light
     : THEME_COLORS.dark;
 
 const drawFrameBackground = (context, width, height) => {
-  const theme = documentTheme.getAttribute("data-theme");
+  const theme = rootElement.getAttribute("data-theme");
   const backgroundGradient = context.createLinearGradient(0, 0, width, height);
 
   if (theme === "light") {
@@ -118,7 +118,7 @@ function setupCanvasBackground() {
     updatePalette();
   });
 
-  observer.observe(documentTheme, {
+  observer.observe(rootElement, {
     attributes: true,
     attributeFilter: ["data-theme"],
   });
